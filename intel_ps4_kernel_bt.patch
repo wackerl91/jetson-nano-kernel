@@ -1,0 +1,52 @@
+diff --git a/drivers/hid/hid-core.c b/drivers/hid/hid-core.c
+index 0f88b4395530..693ad014286d 100644
+--- a/drivers/hid/hid-core.c
++++ b/drivers/hid/hid-core.c
+@@ -2168,9 +2168,9 @@ static const struct hid_device_id hid_have_special_driver[] = {
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS3_CONTROLLER) },
+ 	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS3_CONTROLLER) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER) },
+-/*	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER) }, */
++	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER_2) },
+-/*	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER_2) }, */
++	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER_2) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER_DONGLE) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_VAIO_VGX_MOUSE) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_VAIO_VGP_MOUSE) },
+diff --git a/drivers/hid/hid-sony.c b/drivers/hid/hid-sony.c
+index 90977970bbf7..621c4c4e315a 100644
+--- a/drivers/hid/hid-sony.c
++++ b/drivers/hid/hid-sony.c
+@@ -2601,12 +2601,12 @@ static const struct hid_device_id sony_devices[] = {
+ 	/* Sony Dualshock 4 controllers for PS4 */
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER),
+ 		.driver_data = DUALSHOCK4_CONTROLLER_USB },
+-/*	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER),
+-		.driver_data = DUALSHOCK4_CONTROLLER_BT },*/
++	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER),
++		.driver_data = DUALSHOCK4_CONTROLLER_BT },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER_2),
+ 		.driver_data = DUALSHOCK4_CONTROLLER_USB },
+-/*	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER_2),
+-		.driver_data = DUALSHOCK4_CONTROLLER_BT },*/
++	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER_2),
++		.driver_data = DUALSHOCK4_CONTROLLER_BT },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS4_CONTROLLER_DONGLE),
+ 		.driver_data = DUALSHOCK4_CONTROLLER_USB },
+ 	/* Nyko Core Controller for PS3 */
+diff --git a/scripts/Kbuild.include b/scripts/Kbuild.include
+index 84faec0cc2ce..6023756d6638 100644
+--- a/scripts/Kbuild.include
++++ b/scripts/Kbuild.include
+@@ -461,8 +461,8 @@ endef
+ # It's a common trick to declare makefile variable that contains space
+ # we'll need it to convert the path string to list (string delimited by spaces)
+ # and vice versa
+-the-space :=
+-the-space += 
++E =
++the-space = $E $E
+ # TEGRA_ROOT_PATH is the relative path to the directory one level upper than $srctree
+ _TEGRA_ROOT_PATH = $(subst ^$(realpath $(srctree)/..)/,,^$(realpath $(kbuild-dir)))
+ # _TEGRA_REL_PATH is path like "../../../" that points to directory one level

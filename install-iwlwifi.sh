@@ -17,6 +17,8 @@ git fetch origin
 git checkout origin/release/core52
 # patch for L4T 32.7.3
 git apply "${BUILD_BUG_H_PATCH}"
+# L4T R32.7.4 contains backported functions 
+rm backport-include/linux/random.h
 popd
 
 # clean
